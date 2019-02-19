@@ -9,6 +9,7 @@ import {
 } from '../../../errorHandling/';
 
 import { PgDriver } from '../../../db/driver';
+import { NamedType } from 'types/createNamedType';
 
 export type EmitEvent = {
   (name: string): <A>(object: A) => void;
@@ -41,7 +42,10 @@ export type GetResolverDependencies<
   dbQuery: (
     db: PgDriver
   ) => (r: ReqTransformed) => Task<DbError, Maybe<ResRaw>>;
-  transformResult: (result: Maybe<ResRaw>, request: ReqRaw) => ResTransformed;
+  transformResult: (
+    result: Maybe<ResRaw>,
+    request: ReqRaw
+  ) => NamedType<ResTransformed>;
 };
 
 export type MgetResolverDependencies<
@@ -58,7 +62,10 @@ export type MgetResolverDependencies<
   dbQuery: (
     db: PgDriver
   ) => (r: ReqTransformed) => Task<DbError, Maybe<ResRaw>[]>;
-  transformResult: (result: Maybe<ResRaw>[], request: ReqRaw) => ResTransformed;
+  transformResult: (
+    result: Maybe<ResRaw>[],
+    request: ReqRaw
+  ) => NamedType<ResTransformed>;
 };
 
 export type SearchResolverDependencies<
@@ -73,7 +80,10 @@ export type SearchResolverDependencies<
   ResTransformed
 > & {
   dbQuery: (db: PgDriver) => (r: ReqTransformed) => Task<DbError, ResRaw[]>;
-  transformResult: (results: ResRaw[], request: ReqRaw) => ResTransformed;
+  transformResult: (
+    results: ResRaw[],
+    request: ReqRaw
+  ) => NamedType<ResTransformed>;
 };
 
 export type RuntimeResolverDependenties = {
