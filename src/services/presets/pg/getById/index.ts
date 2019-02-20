@@ -6,15 +6,14 @@ import { transformResults } from './transformResult';
 
 import getData from './pg';
 import { ServicePresetInitOptions } from 'services/presets/types';
-import { NamedTypeFactory } from 'types/createNamedType';
 import { identity } from 'ramda';
 
 export type GetByIdPresetOptions<Request, ResponseRaw, ResponseTransformed> = {
   name: string;
   inputSchema: SchemaLike;
   resultSchema: SchemaLike;
-  resultTypeFactory: NamedTypeFactory<ResponseTransformed>;
-  transformResult: (d: ResponseRaw) => ResponseTransformed;
+  resultTypeFactory: (a?: any) => ResponseTransformed;
+  transformResult: (d: ResponseRaw) => any;
   sql: (qt: Request) => string;
 };
 

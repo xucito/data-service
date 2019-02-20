@@ -34,7 +34,7 @@ describe('Resolver', () => {
 
   const mockPgDriver: PgDriver = {
     one: (s: string) => taskOf<DbError, string | null>(s),
-  } as PgDriver;
+  } as any;
 
   const createMockResolver = (
     validateInput: (s: string) => Result<ValidationError, string>,

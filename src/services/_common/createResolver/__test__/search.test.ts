@@ -28,7 +28,7 @@ const resultError = (s: string) =>
 
 const mockPgDriver: PgDriver = {
   many: (query: string) => taskOf<DbError, string[]>(query.split('::')),
-} as PgDriver;
+} as any;
 
 const commonConfig = {
   transformInput: identity,

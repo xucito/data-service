@@ -4,7 +4,7 @@ import { always, identity } from 'ramda';
 
 import Joi, { SchemaLike } from '../../../../../utils/validation/joi';
 
-import { TransactionData, Transaction } from '../../../../../types';
+import { Transaction, TransactionData } from '../../../../../types';
 import getByIdPreset from '..';
 import { inputGet as input } from '../inputSchema';
 import { PgDriver } from 'db/driver';
@@ -12,13 +12,13 @@ import { AppError, ResolverError } from '../../../../../errorHandling';
 import { NamedType } from 'types/createNamedType';
 
 const createService = (resultSchema: SchemaLike) =>
-  getByIdPreset<string, string, TransactionData>({
+  getByIdPreset<string, string, NamedType<TransactionData>>({
     name: 'some_name',
     sql: identity,
     inputSchema: input,
     resultSchema,
     transformResult: d => ({}),
-    resultTypeFactory: Transaction,
+    resultTypeFactory: (a: TransactionData) => Transaction(a),
   })({
     pg: { oneOrNone: id => taskOf(maybeOf(id)) } as PgDriver,
     emitEvent: always(identity),
@@ -26,7 +26,7 @@ const createService = (resultSchema: SchemaLike) =>
 
 const assertValidationError = (
   done: (text?: string) => void,
-  r: (req: string) => Task<AppError, NamedType<TransactionData>>,
+  r: (req: string) => Task<AppError, TransactionData>,
   v?: any
 ) =>
   r(v)

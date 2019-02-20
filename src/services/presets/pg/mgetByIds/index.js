@@ -1,11 +1,11 @@
-import { identity } from 'ramda';
+const { identity } = require('ramda');
 
-import createResolver from '../../../_common/createResolver';
+const createResolver = require('../../../_common/createResolver');
 
-import { validateInput, validateResult } from '../../validation';
-import transformResultFn from './transformResult';
+const { validateInput, validateResult } = require('../../validation');
+const transformResultFn = require('./transformResult');
 
-import getData from './pg';
+const getData = require('./pg');
 
 module.exports = ({
   name,

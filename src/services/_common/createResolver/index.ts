@@ -26,7 +26,6 @@ import {
   RuntimeResolverDependenties,
   Validate,
 } from './types';
-import { NamedType } from 'types/createNamedType';
 
 const createResolver = <
   RequestRaw,
@@ -41,10 +40,10 @@ const createResolver = <
   transformAllResults: (
     response: ResponseRaw,
     request: RequestRaw
-  ) => NamedType<ResponseTransformed>,
+  ) => ResponseTransformed,
   emitEvent: EmitEvent,
   request: RequestRaw
-): Task<AppError, NamedType<ResponseTransformed>> =>
+): Task<AppError, ResponseTransformed> =>
   taskOf<never, RequestRaw>(request)
     .map(validateInput)
     .chain(resultToTask)

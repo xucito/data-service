@@ -1,5 +1,5 @@
 import { fromNullable } from 'folktale/maybe';
-import { toDbError } from '../../../../errorHandling';
+import { DbError } from '../../../../errorHandling';
 import { PgDriver } from 'db/driver';
 
 export type GetByIdFromDb<T> = {
@@ -14,4 +14,7 @@ export default <QueryType, QueryResultType>({
   pg
     .oneOrNone<QueryResultType>(sql(id))
     .map(data => fromNullable<QueryResultType>(data))
-    .mapRejected(toDbError({ request: name, params: id }));
+    .mapRejected(
+      (e: DbError) => new DbError(name)
+      // toDbError({ request: name, params: id })
+    );
