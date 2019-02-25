@@ -1,4 +1,4 @@
-const {
+import {
   parseFilterValues,
   timeStart,
   timeEnd,
@@ -6,7 +6,7 @@ const {
   sort,
   after,
   ids,
-} = require('.');
+} from '.';
 
 describe('Filter values parsing', () => {
   const filters = { timeStart, timeEnd, limit, sort, after, ids };
