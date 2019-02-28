@@ -15,6 +15,6 @@ export default <QueryType, QueryResultType>({
     .oneOrNone<QueryResultType>(sql(id))
     .map(data => fromNullable<QueryResultType>(data))
     .mapRejected(
-      (e: DbError) => new DbError(name)
+      (e: DbError) => console.log(e) || new DbError(name)
       // toDbError({ request: name, params: id })
     );

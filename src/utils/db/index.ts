@@ -1,4 +1,5 @@
 import { fromNullable } from 'folktale/maybe';
+import { QueryBuilder } from 'knex';
 
 export const matchRequestsResults = <Request, Response>(
   matchFn: (req: Request, res: Response) => boolean,
@@ -6,8 +7,8 @@ export const matchRequestsResults = <Request, Response>(
   results: Response[]
 ) => requests.map(req => fromNullable(results.find(res => matchFn(req, res))));
 
-type QueryBuilder2 = string;
-export type Filter<T> = (value: T) => (q: QueryBuilder2) => QueryBuilder2;
+export type Filter<T> = (value: T) => (q: QueryBuilder) => QueryBuilder;
+
 export const pickBindFilters = <
   Filters extends Record<string, Filter<any>>,
   FiltersToApply extends (keyof Filters)[]
@@ -19,5 +20,5 @@ export const pickBindFilters = <
       ? R
       : never
   }
-): Array<(q: QueryBuilder2) => QueryBuilder2> =>
+): Array<(q: QueryBuilder) => QueryBuilder> =>
   fsToApply.filter(fName => F[fName]).map(x => F[x](fValues[x]));
