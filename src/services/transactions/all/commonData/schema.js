@@ -18,7 +18,10 @@ const inputSearch = Joi.object()
     ...commonFilters,
 
     sender: Joi.string(),
+    assetId: Joi.string(),
+    address: Joi.string(),
   })
-  .required();
+  .required()
+  .without('sender', ['assetId', 'address']);
 
 module.exports = { result, inputSearch };

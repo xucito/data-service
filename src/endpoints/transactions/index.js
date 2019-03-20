@@ -49,7 +49,7 @@ const createOptions = specificFilters => ({
 const transactionsEndpointsConfig = {
   '/transactions/all': {
     service: all,
-    options: createOptions(),
+    options: { ...commonTxFilters, assetId: identity, address: identity },
   },
   '/transactions/genesis': {
     service: genesis,
@@ -63,7 +63,7 @@ const transactionsEndpointsConfig = {
     service: issue,
     options: createOptions({
       assetId: identity,
-      script: identity
+      script: identity,
     }),
   },
   '/transactions/transfer': {
