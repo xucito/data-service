@@ -19,7 +19,7 @@ module.exports = ({ drivers: { pg }, emitEvent }) => {
   return {
     get: getByIdPreset({
       name: 'transactions.all.commonData.get',
-      sql: sql.get,
+      sql: request => sql(request).get(request),
       inputSchema: inputGet,
       resultSchema: result,
       resultTypeFactory: transaction,
@@ -29,7 +29,7 @@ module.exports = ({ drivers: { pg }, emitEvent }) => {
     mget: mgetByIdsPreset({
       name: 'transactions.all.commonData.mget',
       matchRequestResult: propEq('id'),
-      sql: sql.mget,
+      sql: request => sql(request).mget(request),
       resultTypeFactory: transaction,
       inputSchema: inputMget,
       resultSchema: result,
@@ -38,7 +38,7 @@ module.exports = ({ drivers: { pg }, emitEvent }) => {
 
     search: searchWithPaginationPreset({
       name: 'transactions.all.commonData.search',
-      sql: sql.search,
+      sql: request => sql(request).search(request),
       inputSchema: inputSearch,
       resultSchema: result,
       transformResult: compose(

@@ -17,11 +17,11 @@ const inputSearch = Joi.object()
   .keys({
     ...commonFilters,
 
-    sender: Joi.string(),
-    assetId: Joi.string(),
-    address: Joi.string(),
+    sender: Joi.string().base58(),
+    assetId: Joi.string().base58(),
+    address: Joi.string().base58(),
   })
-  .required()
-  .without('sender', ['assetId', 'address']);
+  .without('sender', ['assetId', 'address'])
+  .required();
 
 module.exports = { result, inputSearch };
