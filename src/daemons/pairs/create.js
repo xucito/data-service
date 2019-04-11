@@ -6,16 +6,17 @@ const loop = ({ logTask, pg, tableName }) => {
   const logMessages = {
     start: timeStart => ({
       message: '[PAIRS] update started',
-      time: timeStart,
+      timeStart,
     }),
     error: (e, timeTaken) => ({
       message: '[PAIRS] update error',
-      time: timeTaken,
+      elapsedTime: timeTaken,
       error: e instanceof Error ? e : new Error(e), // Error.toString() -> e.message
     }),
-    success: (_, timeTaken) => ({
+    success: (results, timeTaken) => ({
       message: '[PAIRS] update success',
-      time: timeTaken,
+      elapsedTime: timeTaken,
+      rows: results[2].count
     }),
   };
 
@@ -25,6 +26,7 @@ const loop = ({ logTask, pg, tableName }) => {
       t.batch([
         t.none(sql.truncateTable(tableName)),
         t.none(sql.fillTable(tableName)),
+        t.one('select count_affected_rows() as count'),
       ])
     )
   );

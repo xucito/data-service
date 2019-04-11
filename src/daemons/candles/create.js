@@ -44,16 +44,17 @@ const updateCandlesLoop = (logTask, pg, tableName) => {
   const logMessages = {
     start: timeStart => ({
       message: '[CANDLES] start updating candles',
-      time: timeStart,
+      timeStart,
     }),
     error: (e, timeTaken) => ({
       message: '[CANDLES] update error',
-      time: timeTaken,
+      elapsedTime: timeTaken,
       error: e,
     }),
-    success: (_, timeTaken) => ({
+    success: (results, timeTaken) => ({
       message: '[CANDLES] update successful',
-      time: timeTaken,
+      elapsedTime: timeTaken,
+      results,
     }),
   };
 
@@ -111,10 +112,13 @@ const fillCandlesDBAll = (logTask, pg, tableName) =>
     pg.tx(t =>
       t.batch([
         t.any(truncateTable(tableName)),
+        t.one('select count_affected_rows() as count'),
         t.any(insertAllMinuteCandles(tableName)),
+        t.one('select count_affected_rows() as count'),
         ...intervalPairs.map(([shorter, longer]) =>
           t.any(insertAllCandles(tableName, shorter, longer))
         ),
+        t.one('select count_affected_rows() as count'),
       ])
     )
   );

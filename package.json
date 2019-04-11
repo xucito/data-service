@@ -3,7 +3,7 @@
   "version": "0.18.0",
   "description": "Waves data service",
   "main": "src/index.js",
-  "repository": "git@github.com:wavesplatform/data-service.git",
+  "repository": "git@bitbucket.org:wavesplatform/data-service-balances.git",
   "author": "Dmitry Shuranov <dvshur@gmail.com>",
   "license": "MIT",
   "scripts": {
