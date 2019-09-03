@@ -2,6 +2,7 @@ const pg = require('knex')({ client: 'pg' });
 
 const columnsWithoutFee = [
   // common
+  'uid',
   'height',
   'tx_type',
   'id',
@@ -9,7 +10,6 @@ const columnsWithoutFee = [
   'signature',
   'proofs',
   'tx_version',
-  'uid',
   // 'fee',
   'sender',
   'sender_public_key',

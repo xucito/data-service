@@ -35,6 +35,7 @@ const withGrouping = q =>
     );
 
 const columns = {
+  uid: 'uid',
   id: 'txs.id',
   fee: pg.raw('(fee * 10^(-8)) :: DOUBLE PRECISION'),
   recipients: pg.raw('array_agg(tfs.recipient order by tfs.position_in_tx)'),

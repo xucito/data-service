@@ -2,6 +2,7 @@ const pg = require('knex')({ client: 'pg' });
 
 const select = pg({ t: 'txs_14' })
   .select({
+    uid: 't.uid',
     height: 't.height',
     tx_type: 't.tx_type',
     id: 't.id',
@@ -12,7 +13,6 @@ const select = pg({ t: 'txs_14' })
     fee: pg.raw('t.fee * 10^(-8)'),
     sender: 't.sender',
     sender_public_key: 't.sender_public_key',
-    uid: 't.uid',
 
     asset_id: 't.asset_id',
     min_sponsored_asset_fee: pg.raw(

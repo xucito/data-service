@@ -4,6 +4,6 @@ exports[`Sql builder  get works 1`] = `"select * from \\"some_table\\" where \\"
 
 exports[`Sql builder mget works 1`] = `"select * from \\"some_table\\" where \\"id\\" in ('id1', 'id2')"`;
 
-exports[`Sql builder search covers case with all filters (without after) 1`] = `"select * from \\"some_table\\" where \\"sender\\" = 'sender' and \\"time_stamp\\" >= 'timeStart' and \\"time_stamp\\" <= 'timeEnd' order by \\"time_stamp\\" desc, \\"id\\" desc limit 1"`;
+exports[`Sql builder search covers case with all filters (without after) 1`] = `"select * from \\"some_table\\" where \\"sender\\" = 'sender' and \\"time_stamp\\" >= 'timeStart' and \\"time_stamp\\" <= 'timeEnd' order by \\"uid\\" desc limit 1"`;
 
-exports[`Sql builder search covers case with all filters with after 1`] = `"select * from \\"some_table\\" where \\"sender\\" = 'sender' and \\"time_stamp\\" >= 'timeStart' and \\"time_stamp\\" <= 'timeEnd' and (time_stamp, id) > ('timestamp', 'id') order by \\"time_stamp\\" desc, \\"id\\" desc limit 1"`;
+exports[`Sql builder search covers case with all filters with after 1`] = `"select * from \\"some_table\\" where \\"sender\\" = 'sender' and \\"time_stamp\\" >= 'timeStart' and \\"time_stamp\\" <= 'timeEnd' and \\"uid\\" > 10 order by \\"uid\\" desc limit 1"`;

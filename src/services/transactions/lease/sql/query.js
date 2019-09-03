@@ -1,6 +1,7 @@
 const pg = require('knex')({ client: 'pg' });
 
 const select = pg({ t: 'txs_8' }).select({
+  uid: 't.uid',
   height: 't.height',
   tx_type: 't.tx_type',
   id: 't.id',
@@ -13,7 +14,6 @@ const select = pg({ t: 'txs_8' }).select({
   sender_public_key: 't.sender_public_key',
   amount: pg.raw('t.amount * 10^(-8)'),
   recipient: 't.recipient',
-  uid: 't.uid',
 });
 
 module.exports = { select };

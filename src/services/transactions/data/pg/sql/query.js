@@ -2,6 +2,7 @@ const pg = require('knex')({ client: 'pg' });
 
 const select = pg
   .columns([
+    'uid',
     'tx_type',
     'tx_version',
     'height',
@@ -11,7 +12,6 @@ const select = pg
     'proofs',
     'sender',
     'sender_public_key',
-    'uid',
 
     // data values
     'tx_id',

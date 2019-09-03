@@ -3,6 +3,7 @@ const pg = knex({ client: 'pg' });
 
 const columnsWithoutFeeAndPaymentAssetId = [
   // common
+  'uid',
   'height',
   'tx_type',
   'id',
@@ -12,7 +13,6 @@ const columnsWithoutFeeAndPaymentAssetId = [
   'tx_version',
   'sender',
   'sender_public_key',
-  'uid',
 
   // type-specific
   'dapp',

@@ -2,6 +2,7 @@ const pg = require('knex')({ client: 'pg' });
 
 const columnsWithoutSatoshi = [
   // common
+  'uid',
   'height',
   'tx_type',
   'id',
@@ -9,7 +10,6 @@ const columnsWithoutSatoshi = [
   'signature',
   'proofs',
   'tx_version',
-  'uid',
   // 'fee',
   'sender',
   'sender_public_key',

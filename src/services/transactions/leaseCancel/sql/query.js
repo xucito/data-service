@@ -1,6 +1,7 @@
 const pg = require('knex')({ client: 'pg' });
 
 const select = pg({ t: 'txs_9' }).select({
+  uid: 't.uid',
   height: 't.height',
   tx_type: 't.tx_type',
   id: 't.id',
@@ -12,7 +13,6 @@ const select = pg({ t: 'txs_9' }).select({
   sender: 't.sender',
   sender_public_key: 't.sender_public_key',
   lease_id: 't.lease_id',
-  uid: 't.uid',
 });
 
 module.exports = { select };

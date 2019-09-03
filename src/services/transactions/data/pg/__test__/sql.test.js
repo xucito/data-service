@@ -45,9 +45,8 @@ describe('transactions.data api method', () => {
       expect(
         sql.search({
           after: {
-            timestamp: new Date('2018-04-07T08:36:52.149Z'),
-            id: '23sjEq5zNctBTGqrsapLrPxDkHFM8rJCKF1ti55NRpbF',
-            sortDirection: 'asc',
+            uid: 10,
+            sort: 'asc',
           },
         })
       ).toMatchSnapshot();

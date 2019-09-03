@@ -3,6 +3,7 @@ const pg = require('knex')({ client: 'pg' });
 const { compose, omit, keys } = require('ramda');
 
 const columns = {
+  uid: 't.uid',
   id: 't.id',
   time_stamp: 't.time_stamp',
   height: 't.height',
@@ -11,8 +12,6 @@ const columns = {
 
   tx_type: 't.tx_type',
   tx_version: 't.tx_version',
-
-  uid: 't.uid',
 
   sender: 't.sender',
   sender_public_key: 't.sender_public_key',

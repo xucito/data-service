@@ -1,6 +1,7 @@
 const pg = require('knex')({ client: 'pg' });
 
 const columns = {
+  uid: 't.uid',
   height: 't.height',
   tx_type: 't.tx_type',
   id: 't.id',
@@ -16,7 +17,6 @@ const columns = {
   recipient: 't.recipient',
   fee_asset: 't.fee_asset',
   attachment: 't.attachment',
-  uid: 't.uid',
 };
 
 const decimals = alias =>
