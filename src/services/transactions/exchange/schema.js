@@ -34,6 +34,7 @@ const orderTypes = prefix => ({
 const result = Joi.object().keys({
   ...commonFields,
 
+  uid: Joi.number().required(),
   price_asset: Joi.string().required(),
   amount_asset: Joi.string().required(),
   price: Joi.object()
