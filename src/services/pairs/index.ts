@@ -1,18 +1,19 @@
-import { Maybe, of as maybeOf } from 'folktale/maybe';
-import { Task, of as taskOf, rejected } from 'folktale/concurrency/task';
+import { Maybe, of as maybeOf, empty } from 'folktale/maybe';
+import { Task, of as taskOf } from 'folktale/concurrency/task';
 import * as LRU from 'lru-cache';
 import { createOrderPair } from '@waves/assets-pairs-order';
 
 import { DataServiceConfig } from '../../loadConfig';
 import { loadMatcherSettings } from '../../loadMatcherSettings';
-import { AppError, ValidationError } from '../../errorHandling';
+import { AppError } from '../../errorHandling';
 import {
   pair,
   PairInfo,
   Pair,
+  list,
   List,
-  Service,
   TransactionInfo,
+  Service,
 } from '../../types';
 import { CommonServiceDependencies } from '..';
 import { getByIdPreset } from '../presets/pg/getById';
@@ -110,7 +111,7 @@ export default ({
       Pair
     >({
       name: 'pairs.mget',
-      orderPair: null,  // just for backward compatibility (it's fixed in v1)
+      orderPair: null, // just for backward compatibility (it's fixed in v1)
       defaultMatcherAddress: options.matcher.defaultMatcherAddress,
       sql: sql.mget,
       transformResult: transformResult,
@@ -158,7 +159,7 @@ export default ({
               );
 
             if (found.length < notCached.length) {
-              return rejected(new ValidationError(new Error('Check pair')));
+              return taskOf(empty());
             } else {
               found.forEach(tx => cache.set(tx.id, true));
               return getPair;
@@ -182,15 +183,20 @@ export default ({
           // all of assets are in cache
           return mgetPairs;
         } else {
-          return issueTxs.mget(notCached).chain(list => {
-            const found = list.data
+          return issueTxs.mget(notCached).chain(l => {
+            const found = l.data
               .map(tx => tx.data)
               .filter(
                 (t: TransactionInfo | null): t is TransactionInfo => t !== null
               );
 
             found.forEach(tx => cache.set(tx.id, true));
-            return mgetPairs;
+
+            return mgetPairs.map(pairs =>
+              list(pairs.data.map(p => p), {
+                matcher: request.matcher,
+              })
+            );
           });
         }
       },
