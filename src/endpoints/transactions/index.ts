@@ -15,6 +15,8 @@ import {
 } from '../_common/filters';
 import { Serializable, Service } from '../../types';
 
+import { parseFilters as parseDataTxFilters } from './parseDataTxFilters';
+
 // filters
 const commonTxFilters = {
   ids,
@@ -106,7 +108,7 @@ const transactionsEndpointsConfig = (
   },
   '/transactions/data': {
     service: services.data,
-    options: { parseFiltersFn: require('./parseDataTxFilters') },
+    options: { parseFiltersFn: parseDataTxFilters },
   },
   '/transactions/set-script': {
     service: services.setScript,
@@ -133,7 +135,7 @@ type EndpointDependencies = {
 
 type EndpointOptions = {
   filterParsers?: any; // { [param: string]: (param: string) => any }, but { ids: (strOrArr: any) => any } does not assign (ids does not assign)
-  parseFiltersFn?: (query: string) => Record<string, any>;
+  parseFiltersFn?: (query: any) => Record<string, any>;
   mgetFilterName?: string;
 };
 

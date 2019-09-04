@@ -110,7 +110,7 @@ export default ({
       Pair
     >({
       name: 'pairs.mget',
-      orderPair,
+      orderPair: null,  // just for backward compatibility (it's fixed in v1)
       defaultMatcherAddress: options.matcher.defaultMatcherAddress,
       sql: sql.mget,
       transformResult: transformResult,
