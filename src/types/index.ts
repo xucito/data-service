@@ -97,7 +97,7 @@ export type PairInfo = {
 };
 
 export type Pair = Serializable<'pair', PairInfo | null> & Partial<AssetIdsPair>;
-export const pair = (data: PairInfo | null, pairData: AssetIdsPair | null): Pair =>
+export const pair = (data: PairInfo | null, pairData: AssetIdsPair | null): Pair => 
   ({...toSerializable('pair', data), ...pairData});
 
 // @todo TransactionInfo
