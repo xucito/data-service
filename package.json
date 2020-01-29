@@ -45,7 +45,7 @@
   },
   "dependencies": {
     "@koa/cors": "^2.2.3",
-    "@turtlenetwork/assets-pairs-order": "^4.0.0",
+    "@turtlenetwork/assets-pairs-order": "4.0.1",
     "@turtlenetwork/data-entities": "^8.0.1",
     "@waves/parse-json-bignumber": "^1.0.1",
     "chalk": "^2.4.2",
