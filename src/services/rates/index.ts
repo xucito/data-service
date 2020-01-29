@@ -1,4 +1,4 @@
-import { BigNumber } from '@waves/data-entities';
+import { BigNumber } from '@turtlenetwork/data-entities';
 import { withStatementTimeout } from '../../db/driver';
 import {
   ServiceMget,

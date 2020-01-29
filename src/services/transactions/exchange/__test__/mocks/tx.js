@@ -1,4 +1,4 @@
-const { BigNumber } = require('@waves/data-entities');
+const { BigNumber } = require('@turtlenetwork/data-entities');
 
 const txExchange = {
   id: '8rEwYY4wQ4bkEkk95EiyeQnvnonX6TAnU6eiBAbVSADk',

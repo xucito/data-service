@@ -1,7 +1,7 @@
 const Joi = require('./joi');
 const { deserialize } = require('../../services/transactions/_common/cursor');
 
-const { BigNumber } = require('@waves/data-entities');
+const { BigNumber } = require('@turtlenetwork/data-entities');
 
 const validate = s => v => Joi.validate(v, s, { convert: false });
 const assertPass = x => expect(x.error).toBe(null);

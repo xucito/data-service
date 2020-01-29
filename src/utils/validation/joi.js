@@ -1,6 +1,6 @@
 const rawJoi = require('joi');
 
-const { BigNumber } = require('@waves/data-entities');
+const { BigNumber } = require('@turtlenetwork/data-entities');
 const regex = require('../regex');
 const { interval } = require('../../types');
 const { div } = require('../interval');
