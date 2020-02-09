@@ -146,6 +146,9 @@ const updatedFieldsExcluded = [
 
 /** insertOrUpdateCandles :: (String, Array[Object]) -> String query */
 const insertOrUpdateCandles = (tableName, candles) => {
+
+  var test = candles.map(serializeCandle);
+  test;
   if (candles.length) {
     return pg
       .raw(
@@ -209,12 +212,15 @@ const insertAllMinuteCandles = tableName =>
 
 /** insertAllCandles :: (String, Number, Number, Number) -> String query */
 const insertAllCandles = (tableName, shortInterval, longerInterval) =>
-  insertIntoCandlesFromSelect(tableName, function() {
+{
+  var test = makeCandleCalculateColumns(longerInterval);
+  return insertIntoCandlesFromSelect(tableName, function() {
     this.from({ t: tableName })
       .column(makeCandleCalculateColumns(longerInterval))
       .where('t.interval', shortInterval)
       .groupBy(['candle_time', 'amount_asset_id', 'price_asset_id', 'matcher']);
   }).toString();
+}
 
 /** selectCandlesAfterTimestamp :: Date -> String query */
 const selectCandlesAfterTimestamp = timetamp =>

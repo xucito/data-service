@@ -1,4 +1,4 @@
-import { BigNumber } from '@turtlenetwork/data-entities';
+import { BigNumber } from '@turtlenetwork/bignumber';
 import { Task } from 'folktale/concurrency/task';
 import { Maybe } from 'folktale/maybe';
 
