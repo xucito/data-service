@@ -32,6 +32,13 @@ steps:
     customCommand: 'run test:u'
   displayName: 'Testing npm'  
 
+- task: PublishTestResults@2
+  inputs:
+    testResultsFormat: 'JUnit'
+    testResultsFiles: 'junit.xml'
+  condition: always()
+  displayName: 'Upload junit test results'
+  
 - task: Npm@1
   inputs:
     command: 'custom'
