@@ -29,7 +29,7 @@ steps:
 - task: Npm@1
   inputs:
     command: 'custom'
-    customCommand: 'test:u'
+    customCommand: 'run test:u'
   displayName: 'Testing npm'  
 
 - task: Npm@1
