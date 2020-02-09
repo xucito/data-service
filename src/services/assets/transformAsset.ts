@@ -1,6 +1,6 @@
 import { renameKeys } from 'ramda-adjunct';
-import { compose } from 'ramda';
-import { Asset } from '@turtlenetwork/data-entities';
+import { compose, omit } from 'ramda';
+import { Asset } from '@waves/data-entities';
 import { AssetDbResponse } from './types';
 
 export const transformDbResponse = (raw: AssetDbResponse): Asset =>
@@ -15,5 +15,6 @@ export const transformDbResponse = (raw: AssetDbResponse): Asset =>
       decimals: 'precision',
       has_script: 'hasScript',
       min_sponsored_asset_fee: 'minSponsoredFee',
-    })
+    }),
+    omit(['uid'])
   )(raw);

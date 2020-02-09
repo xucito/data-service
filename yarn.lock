@@ -301,9 +301,9 @@
   dependencies:
     bs58 "^4.0.1"
 
-"@turtlenetwork/data-entities@^8.0.1":
+"@waves/data-entities@^8.0.1":
   version "8.0.1"
-  resolved "https://registry.yarnpkg.com/@turtlenetwork/data-entities/-/data-entities-8.0.1.tgz#647acc26956867e4ee95fa6edf2608bc07a25965"
+  resolved "https://registry.yarnpkg.com/@waves/data-entities/-/data-entities-8.0.1.tgz#647acc26956867e4ee95fa6edf2608bc07a25965"
   integrity sha512-JsPqPEdbEVRke1IcQSXsDIcpX1X395rYup5YpOIPovpIe8j6KDD9zIrSRGiYLQ4XyCYUpOif/nWjhd3nKw2oTA==
   dependencies:
     bignumber.js "7.0.1"

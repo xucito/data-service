@@ -1,6 +1,7 @@
+import { BigNumber } from '@turtlenetwork/bignumber';
 import { Task } from 'folktale/concurrency/task';
 import { Maybe } from 'folktale/maybe';
-import { Asset as AssetInfo, BigNumber } from '@turtlenetwork/data-entities';
+import { Asset as AssetInfo } from '@waves/data-entities';
 import { AppError } from '../errorHandling';
 import { toSerializable, Serializable } from './serializable';
 import { Interval, interval, Unit } from './interval';
@@ -125,7 +126,6 @@ export type DataTxEntryType = 'binary' | 'boolean' | 'integer' | 'string';
 export type TransactionInfo = {
   id: string;
   type: number;
-  timestamp: Date;
 };
 export type NotNullTransaction = Serializable<'transaction', TransactionInfo>;
 export type Transaction = Serializable<'transaction', TransactionInfo | null>;

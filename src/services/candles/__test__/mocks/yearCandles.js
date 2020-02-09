@@ -1,4 +1,4 @@
-const { BigNumber } = require('@turtlenetwork/data-entities');
+const { BigNumber } = require('@waves/data-entities');
 
 module.exports = [
   {
