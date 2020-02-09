@@ -1,6 +1,6 @@
 import { Maybe, of as maybeOf } from 'folktale/maybe';
 
-import { BigNumber } from '@turtlenetwork/data-entities';
+import { BigNumber } from '@turtlenetwork/bignumber';
 
 export function safeDivide(n1: BigNumber, n2: BigNumber): Maybe<BigNumber> {
   return maybeOf(n2)

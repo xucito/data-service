@@ -11,9 +11,16 @@ const drivers = {
   pg: createPgDriver(options),
 };
 
+const DEFAULT_TIMEOUT_IN_MS = 30000;
+
 const commonServiceCreatorOptions = {
   drivers,
   emitEvent: () => () => {},
+  timeouts: {
+    get: DEFAULT_TIMEOUT_IN_MS,
+    mget: DEFAULT_TIMEOUT_IN_MS,
+    search: DEFAULT_TIMEOUT_IN_MS,
+  }
 };
 
 const serviceNames = {

@@ -292,8 +292,8 @@ module.exports = rawJoi
 
           if (
             !(value instanceof BigNumber) ||
-            value.isLessThan(BOUNDS.LOWER) ||
-            value.isGreaterThan(BOUNDS.UPPER)
+            value.bn.isLessThan(BOUNDS.LOWER) ||
+            value.bn.isGreaterThan(BOUNDS.UPPER)
           ) {
             return this.createError(
               'object.bignumber.int64',

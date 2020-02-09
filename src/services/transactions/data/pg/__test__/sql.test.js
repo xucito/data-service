@@ -17,8 +17,11 @@ describe('transactions.data api method', () => {
     });
 
     it('timeStart filter', () => {
+      var date = new Date('2018-01-01')
+      var userTimezoneOffset = date.getTimezoneOffset() * 60000;
+      date = new Date(date.getTime() - userTimezoneOffset);
       expect(
-        sql.search({ timeStart: new Date('2018-01-01') })
+        sql.search({ timeStart: date })
       ).toMatchSnapshot();
     });
 
