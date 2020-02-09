@@ -1,7 +1,7 @@
 const Joi = require('./joi');
 const { deserialize } = require('../../services/transactions/_common/cursor');
 
-const { BigNumber } = require('@turtlenetwork/data-entities');
+const { BigNumber } = require('@waves/data-entities');
 
 const validate = s => v => Joi.validate(v, s, { convert: false });
 const assertPass = x => expect(x.error).toBe(null);
@@ -17,11 +17,7 @@ describe('Joi extended with custom types', () => {
 
   it('should validate cursor correctly', () => {
     const validateCursor = validate(Joi.cursor().valid(deserialize));
-    assertPass(
-      validateCursor(
-        'MjAxOC0wOS0xOFQxMzo0NDozNC4wMDBaOjo2b3NpNGI2Q3FrS3oyMVVtWDlxeXdydDJ1aXQ4U1VCOE1udndONjJhNnFLbzo6ZGVzYw=='
-      )
-    );
+    assertPass(validateCursor('MjUwMDAwMDA6OmRlc2M='));
     assertError(validateCursor('q')); // not base64
     assertError(validateCursor('MjAxOC0wOS')); // not decodable
     assertError(validateCursor(1));
