@@ -48,8 +48,10 @@ steps:
   inputs:
     command: 'custom'
     customCommand: 'run build'
-    
-#- task: Npm@1
-#  inputs:
-#    command: 'publish'
-#    publishEndpoint: 'npm turtlenetwork'
+
+
+- task: Docker@2
+  inputs:
+    repository: 'turtlenetwork.eu/data-service'
+    command: 'build'
+    Dockerfile: 'Dockerfile'
