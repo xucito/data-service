@@ -1,9 +1,9 @@
 {
   "name": "data-service",
   "version": "0.28.1",
-  "description": "Waves data service",
+  "description": "Turtle Network data service",
   "main": "src/index.js",
-  "repository": "git@github.com:wavesplatform/data-service.git",
+  "repository": "git@github.com:TurtleNetwork/data-service.git",
   "author": "Dmitry Shuranov <dvshur@gmail.com>",
   "license": "MIT",
   "scripts": {
