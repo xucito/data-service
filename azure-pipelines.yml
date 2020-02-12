@@ -52,6 +52,8 @@ steps:
 
 - task: Docker@2
   inputs:
-    repository: 'turtlenetwork.eu/data-service'
-    command: 'build'
-    Dockerfile: 'Dockerfile'
+    containerRegistry: 'turtlenetwork docker'
+    repository: 'data-service'
+    command: 'buildAndPush'
+    Dockerfile: '**/Dockerfile'
+    addPipelineData: false
