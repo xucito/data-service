@@ -1,10 +1,12 @@
+import BigNumber from "@turtlenetwork/bignumber";
+
 type CommonTxFields = {
   height: number;
   id: string;
   signature: string;
   proofs: string[];
   sender: string;
-  fee: bigint;
+  fee: BigNumber;
 };
 
 export type RawTx = CommonTxFields & {

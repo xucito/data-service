@@ -1,6 +1,6 @@
 import { partition, chain, uniqWith } from 'ramda';
 import { AssetIdsPair, CacheSync } from '../../../types';
-import { BigNumber } from '@waves/data-entities';
+import { BigNumber } from '@turtlenetwork/bignumber';
 import {
   pairIsSymmetric,
   pairsEq,

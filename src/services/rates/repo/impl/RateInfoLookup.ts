@@ -1,6 +1,6 @@
-import { BigNumber } from '@waves/data-entities';
+import { BigNumber } from '@turtlenetwork/bignumber';
 import { Maybe, of as maybeOf, fromNullable } from 'folktale/maybe';
-import { path, complement } from 'ramda';
+import { path, complement, Omit } from 'ramda';
 
 import { AssetIdsPair, CacheSync } from '../../../../types';
 import { WavesId, flip, pairHasWaves } from '../../data';

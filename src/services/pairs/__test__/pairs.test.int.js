@@ -6,7 +6,7 @@ const options = loadConfig();
 const pgDriver = createPgDriver(options);
 const create = require('../').default;
 const { create: createCache } = require('../cache');
-const { BigNumber } = require('@waves/data-entities');
+const { BigNumber } = require('@turtlenetwork/data-entities');
 let pair;
 
 const cache = createCache(1000, 5000);

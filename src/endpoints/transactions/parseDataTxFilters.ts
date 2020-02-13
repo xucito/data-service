@@ -1,5 +1,5 @@
 import { reject, isNil } from 'ramda';
-import { BigNumber } from '@waves/data-entities';
+import { BigNumber } from '@turtlenetwork/bignumber';
 import { parseDate } from '../../utils/parseDate';
 import { parseBool } from '../utils/parseBool';
 import { parseArrayQuery } from '../utils/parseArrayQuery';

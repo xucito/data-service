@@ -1,6 +1,6 @@
 const rawJoi = require('joi');
 
-const { BigNumber } = require('@waves/data-entities');
+const { BigNumber } = require('@turtlenetwork/data-entities');
 const regex = require('../regex');
 const { interval } = require('../../types');
 const { div } = require('../interval');
@@ -292,8 +292,8 @@ module.exports = rawJoi
 
           if (
             !(value instanceof BigNumber) ||
-            value.isLessThan(BOUNDS.LOWER) ||
-            value.isGreaterThan(BOUNDS.UPPER)
+            value.bn.isLessThan(BOUNDS.LOWER) ||
+            value.bn.isGreaterThan(BOUNDS.UPPER)
           ) {
             return this.createError(
               'object.bignumber.int64',

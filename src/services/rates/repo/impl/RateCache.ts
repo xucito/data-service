@@ -1,4 +1,4 @@
-import { BigNumber } from '@waves/data-entities';
+import { BigNumber } from '@turtlenetwork/bignumber';
 import { fromNullable } from 'folktale/maybe';
 import * as LRU from 'lru-cache';
 

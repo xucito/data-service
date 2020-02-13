@@ -6,7 +6,7 @@ import { loadMatcherSettings } from './loadMatcherSettings';
 
 import { zipObj, map } from 'ramda';
 
-import { createOrderPair, TOrderPair } from '@waves/assets-pairs-order';
+import { createOrderPair, TOrderPair } from '@turtlenetwork/assets-pairs-order';
 
 export interface PairOrderingService {
   isCorrectOrder(matcher: string, pair: AssetIdsPair): Maybe<boolean>;

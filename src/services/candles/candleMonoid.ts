@@ -1,4 +1,4 @@
-import { BigNumber } from '@waves/data-entities';
+import { BigNumber } from '@turtlenetwork/bignumber';
 import { Monoid } from '../../types/monoid';
 import { RawCandle } from './transformResults';
 
@@ -19,7 +19,7 @@ export const sumMonoid: Monoid<number> = {
 };
 
 export const bigNumberPlusMonoid: Monoid<BigNumber> = {
-  concat: (a: BigNumber, b: BigNumber): BigNumber => a.plus(b),
+  concat: (a: BigNumber, b: BigNumber): BigNumber => a.add(b),
   empty: new BigNumber(0),
 };
 
@@ -30,20 +30,20 @@ export const maxMonoid: Monoid<number> = {
 
 export const bigNumberMinMonoid: Monoid<BigNumber> = {
   concat: (a: BigNumber, b: BigNumber): BigNumber =>
-    a.comparedTo(b) === 1 ? b : a,
+    a.bn.comparedTo(b.bn) === 1 ? b : a,
   empty: new BigNumber(+Infinity),
 };
 
 export const bigNumberMaxMonoid = {
   concat: (a: BigNumber, b: BigNumber): BigNumber =>
-    a.comparedTo(b) === 1 ? a : b,
+    a.bn.comparedTo(b.bn) === 1 ? a : b,
   empty: new BigNumber(-Infinity),
 };
 
 // individual
 export const weightedAveragePriceMonoid: Monoid<any> = {
   concat: (a: RawCandle, b: RawCandle): BigNumber =>
-    a.quote_volume.plus(b.quote_volume).dividedBy(a.volume.plus(b.volume)),
+    a.quote_volume.add(b.quote_volume).div(a.volume.add(b.volume)),
   empty: new BigNumber(0),
 };
 

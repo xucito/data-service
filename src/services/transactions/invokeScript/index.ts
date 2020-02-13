@@ -1,3 +1,4 @@
+import { RequestWithCursor } from './../../_common/pagination/index';
 import { compose, identity } from 'ramda';
 
 import { withStatementTimeout } from '../../../db/driver';
@@ -29,7 +30,6 @@ import {
 } from './schema';
 import * as transformTxInfo from './transformTxInfo';
 import { RawInvokeScriptTx, InvokeScriptTx } from './types';
-import { RequestWithCursor } from '../../_common/pagination';
 
 const createServiceName = (type: string) => `transactions.invokeScript.${type}`;
 

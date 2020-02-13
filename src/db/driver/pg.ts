@@ -30,9 +30,9 @@ export type PgDriver = {
   oneOrNone<T>(
     query: SqlQuery,
     values?: any,
-    cb?: (value: any) => T,
+    cb?: (value: any) => T | null,
     thisArg?: any
-  ): Task<DbError | Timeout, T>;
+  ): Task<DbError | Timeout, T | null>;
   many<T>(query: SqlQuery, values?: any): Task<DbError | Timeout, T[]>;
   any<T>(query: SqlQuery, values?: any): Task<DbError | Timeout, T[]>;
   task<T>(cb: (t: ITask<{}>) => T | Promise<T>): Task<DbError | Timeout, T>;
@@ -66,7 +66,7 @@ export const createPgDriver = (
     one: <T>(query: SqlQuery, values?: any) =>
       toTasked<T>(() => driverP.one(query, values)),
     oneOrNone: <T>(query: SqlQuery, values?: any) =>
-      toTasked<T>(() => driverP.oneOrNone(query, values)),
+      toTasked<T | null>(() => driverP.oneOrNone(query, values)),
     many: <T>(query: SqlQuery, values?: any) =>
       toTasked<T[]>(() => driverP.many(query, values)),
     any: <T>(query: SqlQuery, values?: any) =>

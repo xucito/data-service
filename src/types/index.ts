@@ -1,6 +1,6 @@
 import { Task } from 'folktale/concurrency/task';
 import { Maybe } from 'folktale/maybe';
-import { Asset as AssetInfo, BigNumber } from '@waves/data-entities';
+import { Asset as AssetInfo, BigNumber } from '@turtlenetwork/data-entities';
 import { AppError } from '../errorHandling';
 import { toSerializable, Serializable } from './serializable';
 import { Interval, interval, Unit } from './interval';

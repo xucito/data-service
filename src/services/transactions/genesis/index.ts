@@ -1,5 +1,5 @@
 import { propEq, compose, Omit } from 'ramda';
-import { BigNumber } from '@waves/data-entities';
+import { BigNumber } from '@turtlenetwork/bignumber';
 
 import { withStatementTimeout } from '../../../db/driver';
 import { CommonServiceDependencies } from '../..';

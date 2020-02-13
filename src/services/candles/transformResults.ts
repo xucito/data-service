@@ -1,4 +1,4 @@
-import { BigNumber } from '@waves/data-entities';
+import { BigNumber } from '@turtlenetwork/bignumber';
 import { Interval } from '../../types';
 
 import {
@@ -137,15 +137,15 @@ const candleFixedDecimals = (
   evolve(
     {
       open: (t: BigNumber | null) =>
-        t ? t.decimalPlaces(8 + pDecimals - aDecimals) : null,
+        t ? t.roundTo(8 + pDecimals - aDecimals) : null,
       close: (t: BigNumber | null) =>
-        t ? t.decimalPlaces(8 + pDecimals - aDecimals) : null,
-      high: (t: BigNumber) => t.decimalPlaces(8 + pDecimals - aDecimals),
-      low: (t: BigNumber) => t.decimalPlaces(8 + pDecimals - aDecimals),
-      volume: (t: BigNumber) => t.decimalPlaces(aDecimals),
-      quote_volume: (t: BigNumber) => t.decimalPlaces(pDecimals),
+        t ? t.roundTo(8 + pDecimals - aDecimals) : null,
+      high: (t: BigNumber) => t.roundTo(8 + pDecimals - aDecimals),
+      low: (t: BigNumber) => t.roundTo(8 + pDecimals - aDecimals),
+      volume: (t: BigNumber) => t.roundTo(aDecimals),
+      quote_volume: (t: BigNumber) => t.roundTo(pDecimals),
       weighted_average_price: (t: BigNumber) =>
-        t.decimalPlaces(8 + pDecimals - aDecimals),
+        t.roundTo(8 + pDecimals - aDecimals),
     },
     candle
   );

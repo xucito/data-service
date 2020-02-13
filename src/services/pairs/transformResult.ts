@@ -1,6 +1,6 @@
 import { compose, pick, map } from 'ramda';
 import { renameKeys } from 'ramda-adjunct';
-import { BigNumber } from '@waves/data-entities';
+import { BigNumber } from '@turtlenetwork/bignumber';
 import { list, List, pair, Pair, PairInfo } from '../../types';
 
 export type PairDbResponse = {
