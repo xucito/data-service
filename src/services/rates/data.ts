@@ -1,7 +1,7 @@
 import { isSymmetric } from './util';
 import { AssetIdsPair } from '../../types';
 
-export const WavesId: string = 'WAVES';
+export const WavesId: string = 'TN';
 
 export const pairIsSymmetric = isSymmetric((p: AssetIdsPair) => [
   p.amountAsset,

@@ -5,7 +5,7 @@ import { toBigNumber } from './bigNumber';
 const parser = createParser<BigNumber>({
   strict: false,
   isInstance: (bn: any): bn is BigNumber => BigNumber.isBigNumber(bn),
-  stringify: (bn: BigNumber) => bn.toFixed(),
+  stringify: (bn: BigNumber) => bn == undefined ? "" : bn.toFixed(),
   parse: toBigNumber,
 });
 
