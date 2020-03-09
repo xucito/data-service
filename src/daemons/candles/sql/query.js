@@ -146,7 +146,17 @@ const updatedFieldsExcluded = [
 
 /** insertOrUpdateCandles :: (String, Array[Object]) -> String query */
 const insertOrUpdateCandles = (tableName, candles) => {
-  if (candles.length) {
+    if (candles.length) {
+      let dict = [];
+      candles = candles.filter(candle => {
+      let candleName = candle.time_stamp+candle.amount_asset+candle.price_asset;
+      if(dict.indexOf(candleName) == -1)
+      {
+        dict.push(candleName);
+        return true;
+      }
+      return false;
+    });
     return pg
       .raw(
         `${pg({ t: tableName }).insert(
