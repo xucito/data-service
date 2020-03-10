@@ -91,17 +91,19 @@ const updateCandlesLoop = (logTask, pg, tableName) => {
             .then(row => row.time_stamp);
         })
         .then(timestamp => {
+          const revertedTimestamp = new Date(timestamp);
+          revertedTimestamp.setHours(revertedTimestamp.getHours() - 24);
           const nextInterval = compose(
             m => m.getOrElse(undefined),
             map(interval =>
-              t.any(
-                insertOrUpdateCandlesFromShortInterval(
-                  tableName,
-                  timestamp,
-                  interval[0],
-                  interval[1]
-                )
-              )
+              {
+                return t.any(insertOrUpdateCandlesFromShortInterval(
+                    tableName,
+                    revertedTimestamp,
+                    interval[0],
+                    interval[1]
+                  ))
+                }
             ),
             fromNullable,
             index => nth(index, intervalPairs)

@@ -82,7 +82,8 @@ const insertIntoCandlesFromSelect = (tableName, selectFunction) =>
   pg.into(tableName).insert(selectFunction);
 
 /** selectExchanges :: QueryBuilder */
-const selectExchanges = pg({ t: 'txs_7' }).column(
+const selectExchanges = pg({ t: 'txs_7' })
+  .column(
   'amount_asset',
   'price_asset',
   'sender',
@@ -90,7 +91,7 @@ const selectExchanges = pg({ t: 'txs_7' }).column(
   { candle_time: pgRawDateTrunc('t.time_stamp')('minute') },
   `amount`,
   `price`
-).distinct(['amount_asset','price_asset','time_stamp']);
+);
 
 /** selectExchangesAfterTimestamp :: Date -> QueryBuilder */
 const selectExchangesAfterTimestamp = fromTimestamp =>
@@ -151,7 +152,7 @@ const insertOrUpdateCandles = (tableName, candles) => {
       .raw(
         `${pg({ t: tableName }).insert(
           candles.map(serializeCandle)
-        )} on conflict (time_start, amount_asset_id, price_asset_id, matcher, interval) do update set ${updatedFieldsExcluded}`
+        )} on conflict (time_start, amount_asset_id, price_asset_id, matcher, interval) do nothing`
       )
       .toString();
   }
@@ -183,7 +184,7 @@ const insertOrUpdateCandlesFromShortInterval = (
             'price_asset_id',
             'matcher'
           );
-      })} on conflict (time_start, amount_asset_id, price_asset_id, matcher, interval) do update set ${updatedFieldsExcluded}`
+      })} on conflict (time_start, amount_asset_id, price_asset_id, matcher, interval) do nothing`
     )
     .toString();
 
