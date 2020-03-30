@@ -152,7 +152,7 @@ const insertOrUpdateCandles = (tableName, candles) => {
       .raw(
         `${pg({ t: tableName }).insert(
           candles.map(serializeCandle)
-        )} on conflict (time_start, amount_asset_id, price_asset_id, matcher, interval) do nothing`
+        )} on conflict (time_start, amount_asset_id, price_asset_id, matcher, interval) do update set ${updatedFieldsExcluded}`
       )
       .toString();
   }
@@ -184,7 +184,7 @@ const insertOrUpdateCandlesFromShortInterval = (
             'price_asset_id',
             'matcher'
           );
-      })} on conflict (time_start, amount_asset_id, price_asset_id, matcher, interval) do nothing`
+      })} on conflict (time_start, amount_asset_id, price_asset_id, matcher, interval) do update set ${updatedFieldsExcluded}`
     )
     .toString();
 
