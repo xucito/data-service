@@ -6,8 +6,8 @@ const { loadConfig } = require('../../../loadConfig');
 const options = loadConfig();
 const create = require('..').default;
 
-const amountAsset = '8dzLYRNtYR6ASG2W4h3FqeeY49paRxNheQwRW6CpP1HT';
-const priceAsset = '4zjSCagDvgPkTCwFjvE4KMFtXz1WX4dNaNutyBw8XnrG';
+const amountAsset = 'TN';
+const priceAsset = '4bXds5VEHFQth6AhpF1k6rjvNKzaMf1Yz2Wab9pn9msD';
 
 describe('Candles', () => {
   const service = create({

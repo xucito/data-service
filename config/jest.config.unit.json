@@ -6,7 +6,7 @@
   "forceExit": true,
   "bail": true,
   "rootDir": "../src",
-  "testMatch": ["**/*.test.js", "**/*.test.ts"],
+  "testMatch": ["**/*.test.js", "**/*.test.ts",  "**/*.test.int.testnet.js"],
   "testURL": "http://localhost/",
   "moduleFileExtensions": ["js", "ts", "json", "node"],
   "setupFilesAfterEnv": ["../config/jest.extentions.js"]

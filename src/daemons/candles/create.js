@@ -97,12 +97,13 @@ const updateCandlesLoop = (logTask, pg, tableName) => {
             m => m.getOrElse(undefined),
             map(interval =>
               {
-                return t.any(insertOrUpdateCandlesFromShortInterval(
-                    tableName,
-                    revertedTimestamp,
-                    interval[0],
-                    interval[1]
-                  ))
+                var command = insertOrUpdateCandlesFromShortInterval(
+                  tableName,
+                  revertedTimestamp,
+                  interval[0],
+                  interval[1]
+                );
+                return t.any(command);
                 }
             ),
             fromNullable,
